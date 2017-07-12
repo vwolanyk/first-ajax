@@ -13,14 +13,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
   requestPingPong.addEventListener('click', function(){
     $.ajax({
-    url: 'http://first-ajax-api.herokuapp.com/ping',
+    url: 'http://first-ajax-api.herokuapp.com/pong',
     method: 'GET',
     dataType: 'text',
   }).done(function(responsedata){
 
     console.log(responsedata);
     step3456.append(responsedata);
-  });
+  }).fail(function(jqXHR, textStatus, errorThrown){
+    step12.prepend("OOPS!! LOOKS LIKE THERE WAS A "+ errorThrown);
+});
 
   });
 
